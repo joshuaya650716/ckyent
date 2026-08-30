@@ -42,6 +42,66 @@ function setList(id, items) {
   });
 }
 
+function renderQuickLinks(items) {
+  const grid =
+    document.getElementById("quick-links-grid") ||
+    document.querySelector('section[aria-labelledby="placeholder-title"] .placeholder-grid');
+  if (!grid) return;
+
+  const links = Array.isArray(items)
+    ? [...items]
+        .filter((item) => item.visible !== false)
+        .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
+    : [];
+
+  grid.innerHTML = "";
+
+  links.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = grid.id === "quick-links-grid" ? "quick-link-card" : "placeholder-card quick-link-card";
+
+    const media = item.imageUrl
+      ? document.createElement("img")
+      : document.createElement("div");
+    if (item.imageUrl) {
+      media.className = "quick-link-media";
+      media.src = item.imageUrl;
+      media.alt = item.title || "連結圖片";
+      media.loading = "lazy";
+    } else {
+      media.className = "quick-link-media quick-link-media--empty";
+      media.textContent = item.title || "照片位";
+      media.setAttribute("aria-hidden", "true");
+    }
+
+    const body = document.createElement("div");
+    body.className = "quick-link-body";
+
+    const order = document.createElement("span");
+    order.className = "quick-link-order";
+    order.textContent = `順序 ${item.order || ""}`.trim();
+
+    const title = document.createElement("strong");
+    title.textContent = item.title || "未命名";
+
+    const desc = document.createElement("p");
+    desc.textContent = item.description || "";
+
+    const link = document.createElement("a");
+    link.className = "action action--primary quick-link-button";
+    link.textContent = item.buttonText || "開啟";
+    link.href = item.linkUrl || "#";
+    if (/^https?:\/\//.test(link.href)) {
+      link.target = "_blank";
+      link.rel = "noreferrer";
+    }
+
+    body.append(order, title, desc, link);
+    card.append(media, body);
+    grid.append(card);
+  });
+}
+
 function applyClinicData(data) {
   if (!data) return;
   document.title = `${data.clinicName}｜網站`;
@@ -81,6 +141,7 @@ function applyClinicData(data) {
   setText("check-in-note", data.checkInNote);
   setList("before-visit-list", data.beforeVisit);
   setList("services-list", data.services);
+  renderQuickLinks(data.quickLinks);
 }
 
 function initModuleCards(data) {
@@ -111,6 +172,88 @@ function fillField(id, value) {
   field.value = Array.isArray(value) ? value.join("\n") : value;
 }
 
+function fillBlockFields(blocks) {
+  const items = Array.isArray(blocks) ? blocks : [];
+  for (let index = 1; index <= 3; index += 1) {
+    const block = items[index - 1] || {};
+    fillField(`edit-quicklink-${index}-order`, block.order ?? String(index));
+    fillField(`edit-quicklink-${index}-title`, block.title);
+    fillField(`edit-quicklink-${index}-description`, block.description);
+    fillField(`edit-quicklink-${index}-button`, block.buttonText);
+    fillField(`edit-quicklink-${index}-link`, block.linkUrl);
+    fillField(`edit-quicklink-${index}-image`, block.imageUrl);
+
+    const visible = document.getElementById(`edit-quicklink-${index}-visible`);
+    if (visible) visible.checked = block.visible !== false;
+  }
+}
+
+function ensureQuickLinkEditor(form) {
+  if (!form || document.getElementById("edit-quicklink-1-order")) return;
+
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "editor-fieldset";
+
+  const legend = document.createElement("legend");
+  legend.textContent = "可調整卡片";
+
+  const help = document.createElement("p");
+  help.className = "editor-help";
+  help.textContent = "改「順序」就能調整位置，改圖片網址與連結網址就能換內容。";
+
+  fieldset.append(legend, help);
+
+  for (let index = 1; index <= 3; index += 1) {
+    const block = document.createElement("div");
+    block.className = "link-block";
+
+    block.innerHTML = `
+      <h3>卡片 ${index}</h3>
+      <div class="field-row field-row--two">
+        <label class="field">
+          <span>順序</span>
+          <input id="edit-quicklink-${index}-order" type="number" />
+        </label>
+        <label class="field">
+          <span>顯示</span>
+          <input id="edit-quicklink-${index}-visible" type="checkbox" />
+        </label>
+      </div>
+      <label class="field">
+        <span>標題</span>
+        <input id="edit-quicklink-${index}-title" type="text" />
+      </label>
+      <label class="field">
+        <span>說明</span>
+        <textarea id="edit-quicklink-${index}-description" rows="2"></textarea>
+      </label>
+      <div class="field-row field-row--two">
+        <label class="field">
+          <span>按鈕文字</span>
+          <input id="edit-quicklink-${index}-button" type="text" />
+        </label>
+        <label class="field">
+          <span>連結網址</span>
+          <input id="edit-quicklink-${index}-link" type="url" />
+        </label>
+      </div>
+      <label class="field">
+        <span>圖片網址</span>
+        <input id="edit-quicklink-${index}-image" type="url" />
+      </label>
+    `;
+
+    fieldset.append(block);
+  }
+
+  const actions = form.querySelector(".editor-actions");
+  if (actions) {
+    form.insertBefore(fieldset, actions);
+  } else {
+    form.append(fieldset);
+  }
+}
+
 function readEditorForm() {
   return {
     clinicName: fieldValue("edit-clinic-name"),
@@ -139,7 +282,27 @@ function readEditorForm() {
     checkInNote: fieldValue("edit-check-in-note"),
     beforeVisit: dataStore.normalizeLines(fieldValue("edit-before-visit")),
     services: dataStore.normalizeLines(fieldValue("edit-services")),
+    quickLinks: readQuickLinkBlocks(),
   };
+}
+
+function readQuickLinkBlocks() {
+  const blocks = [];
+
+  for (let index = 1; index <= 3; index += 1) {
+    const visible = document.getElementById(`edit-quicklink-${index}-visible`);
+    blocks.push({
+      order: fieldValue(`edit-quicklink-${index}-order`) || String(index),
+      title: fieldValue(`edit-quicklink-${index}-title`),
+      description: fieldValue(`edit-quicklink-${index}-description`),
+      buttonText: fieldValue(`edit-quicklink-${index}-button`),
+      linkUrl: fieldValue(`edit-quicklink-${index}-link`),
+      imageUrl: fieldValue(`edit-quicklink-${index}-image`),
+      visible: visible ? visible.checked : true,
+    });
+  }
+
+  return blocks;
 }
 
 function fillEditorForm(data) {
@@ -169,6 +332,7 @@ function fillEditorForm(data) {
   fillField("edit-check-in-note", data.checkInNote);
   fillField("edit-before-visit", data.beforeVisit);
   fillField("edit-services", data.services);
+  fillBlockFields(data.quickLinks);
 }
 
 function updateEditorPreview(data) {
@@ -245,6 +409,7 @@ function initEditor(data) {
   const form = document.getElementById("clinic-editor");
   if (!form || !dataStore) return;
 
+  ensureQuickLinkEditor(form);
   fillEditorForm(data);
   updateEditorPreview(data);
 
