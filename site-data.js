@@ -1,4 +1,5 @@
 const CKYENT_STORAGE_KEY = "ckyent-clinic-site-data";
+const CKYENT_AUTH_KEY = "ckyent-editor-auth";
 
 const CKYENT_DEFAULT_DATA = {
   siteTitle: "楊啟坤耳鼻喉診所",
@@ -141,6 +142,10 @@ function CKYENT_resetData() {
 
 window.CKYENT_SITE_DATA = {
   defaults: CKYENT_cloneDefaultData(),
+  editorLogin: {
+    username: "admin",
+    password: "ckyent2026",
+  },
   load: CKYENT_loadData,
   save: CKYENT_saveData,
   reset: CKYENT_resetData,
