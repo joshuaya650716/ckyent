@@ -22,6 +22,7 @@ const moduleDetails = {
 };
 
 const dataStore = window.CKYENT_SITE_DATA;
+const AUTH_SESSION_KEY = "ckyent-editor-auth";
 
 function setText(id, value) {
   if (!value) return;
@@ -184,6 +185,62 @@ function showEditorStatus(message) {
   if (status) status.textContent = message;
 }
 
+function getAuthConfig() {
+  return dataStore?.editorLogin || {
+    username: "admin",
+    password: "ckyent2026",
+  };
+}
+
+function showLoginStatus(message) {
+  const status = document.getElementById("login-status");
+  if (status) status.textContent = message;
+}
+
+function setEditorVisibility(isAuthed) {
+  const loginPanel = document.getElementById("editor-login-panel");
+  const editorShell = document.getElementById("editor-shell");
+  const logout = document.getElementById("logout-editor");
+
+  if (loginPanel) loginPanel.hidden = isAuthed;
+  if (editorShell) editorShell.hidden = !isAuthed;
+  if (logout) logout.hidden = !isAuthed;
+}
+
+function initAuth() {
+  const loginForm = document.getElementById("editor-login");
+  if (!loginForm) return;
+
+  const authed = sessionStorage.getItem(AUTH_SESSION_KEY) === "1";
+  setEditorVisibility(authed);
+  showLoginStatus(authed ? "已登入，可直接編輯。" : "請輸入管理員帳號與密碼。");
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const expected = getAuthConfig();
+    const username = fieldValue("login-username");
+    const password = document.getElementById("login-password")?.value ?? "";
+
+    if (username === expected.username && password === expected.password) {
+      sessionStorage.setItem(AUTH_SESSION_KEY, "1");
+      setEditorVisibility(true);
+      loginForm.reset();
+      showLoginStatus("登入成功。");
+      return;
+    }
+
+    sessionStorage.removeItem(AUTH_SESSION_KEY);
+    setEditorVisibility(false);
+    showLoginStatus("帳號或密碼不正確，請再試一次。");
+  });
+
+  document.getElementById("logout-editor")?.addEventListener("click", () => {
+    sessionStorage.removeItem(AUTH_SESSION_KEY);
+    setEditorVisibility(false);
+    showLoginStatus("已登出，請重新登入。");
+  });
+}
+
 function initEditor(data) {
   const form = document.getElementById("clinic-editor");
   if (!form || !dataStore) return;
@@ -224,6 +281,7 @@ function initEditor(data) {
 const clinicData = dataStore?.load();
 applyClinicData(clinicData);
 initModuleCards(clinicData || {});
+initAuth();
 initEditor(clinicData || {});
 
 window.addEventListener("storage", () => applyClinicData(dataStore?.load()));
