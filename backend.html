@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>楊啟坤耳鼻喉診所｜後台管理中心</title>
+    <meta
+      name="description"
+      content="診所後台管理中心示意，包含門診、個案、庫存、權限與營運總覽。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Backend workspace</p>
+          <h1>楊啟坤耳鼻喉診所</h1>
+        </div>
+
+        <nav class="topbar__nav" aria-label="主要導覽">
+          <a href="index.html">回首頁</a>
+          <a href="doctor.html">醫師介紹</a>
+          <a href="info.html">門診資訊</a>
+          <a href="#dashboard">營運總覽</a>
+          <a href="#modules">管理模組</a>
+        </nav>
+      </header>
+
+      <main class="backend-shell">
+        <section class="backend-hero">
+          <div class="backend-hero__copy">
+            <p class="eyebrow">後台管理中心</p>
+            <h2>把門診日常變成可以快速操作的工作台</h2>
+            <p>
+              這一頁可以作為醫師、櫃台、護理與管理者的共同入口。左邊是模組，右邊是今天的重點，下面接清單與流程，讓人一進來就知道該先處理什麼。
+            </p>
+          </div>
+
+          <div class="backend-hero__cards">
+            <article class="mini-card">
+              <span>今日門診</span>
+              <strong>上午 + 晚診</strong>
+            </article>
+            <article class="mini-card">
+              <span>即時訊息</span>
+              <strong>待處理 8 則</strong>
+            </article>
+            <article class="mini-card">
+              <span>狀態</span>
+              <strong>正常營運</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="backend-grid" id="dashboard">
+          <aside class="backend-nav" aria-label="管理模組">
+            <a href="#dashboard">營運總覽</a>
+            <a href="#queue">叫號與候診</a>
+            <a href="#inventory">庫存與耗材</a>
+            <a href="#permissions">權限與帳號</a>
+            <a href="index.html">回到前台首頁</a>
+            <a href="doctor.html">醫師介紹</a>
+            <a href="info.html">門診資訊</a>
+          </aside>
+
+          <div class="backend-panel">
+            <div class="backend-panel__top">
+              <div>
+                <p class="eyebrow eyebrow--dark">Dashboard</p>
+                <h3>診所營運總覽</h3>
+              </div>
+              <span class="status">更新中</span>
+            </div>
+
+            <div class="backend-stats">
+              <article class="backend-stat">
+                <span>今日掛號</span>
+                <strong>38</strong>
+              </article>
+              <article class="backend-stat">
+                <span>候診中</span>
+                <strong>12</strong>
+              </article>
+              <article class="backend-stat">
+                <span>待補貨</span>
+                <strong>04</strong>
+              </article>
+              <article class="backend-stat">
+                <span>待追蹤</span>
+                <strong>09</strong>
+              </article>
+            </div>
+
+            <div class="backend-table" id="queue">
+              <div class="backend-table__row backend-table__head">
+                <div>病人 / 項目</div>
+                <div>時間</div>
+                <div>狀態</div>
+                <div>處理者</div>
+              </div>
+              <div class="backend-table__row">
+                <div>門診掛號 - 032</div>
+                <div>09:20</div>
+                <div class="backend-status">候診中</div>
+                <div>櫃台 A</div>
+              </div>
+              <div class="backend-table__row">
+                <div>回診追蹤 - 個案 118</div>
+                <div>10:00</div>
+                <div class="backend-status">待聯絡</div>
+                <div>護理 B</div>
+              </div>
+              <div class="backend-table__row">
+                <div>庫存提醒 - 耳滴劑</div>
+                <div>11:40</div>
+                <div class="backend-status">待補貨</div>
+                <div>管理 C</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="modules" id="modules" aria-labelledby="modules-title">
+          <div class="section-head">
+            <p class="eyebrow">管理模組</p>
+            <h2 id="modules-title">後台功能可以這樣切</h2>
+          </div>
+
+          <div class="module-grid">
+            <article class="backend-card">
+              <h4>門診管理</h4>
+              <p>掛號、叫號、診間安排、門診進度。</p>
+            </article>
+            <article class="backend-card">
+              <h4>個案追蹤</h4>
+              <p>回診提醒、衛教、關懷紀錄、追蹤名單。</p>
+            </article>
+            <article class="backend-card">
+              <h4>庫存與耗材</h4>
+              <p>補貨紀錄、耗材量、低庫存警示與支出。</p>
+            </article>
+            <article class="backend-card">
+              <h4>權限設定</h4>
+              <p>醫師、護理、櫃台、管理員各自不同權限。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="admin-layout" id="inventory" aria-labelledby="inventory-title">
+          <div class="section-head">
+            <p class="eyebrow">系統重點</p>
+            <h2 id="inventory-title">如果之後要正式開發，這些會是最先做的頁面</h2>
+          </div>
+
+          <div class="admin-grid">
+            <div class="admin-preview">
+              <div class="admin-preview__header">
+                <div>
+                  <p class="eyebrow eyebrow--dark">Inventory</p>
+                  <h3>庫存提醒</h3>
+                </div>
+                <span class="status">4 項需注意</span>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>耳鼻噴霧</strong>
+                    <p>剩餘 12，建議本週補貨。</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>檢查用耗材</strong>
+                    <p>晚診前重新確認批次數量。</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>衛教單張</strong>
+                    <p>可同步更新新版內容。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="backend-sidebar" id="permissions">
+              <article class="backend-card">
+                <h4>角色一覽</h4>
+                <p>櫃台、護理、醫師、院長、管理者。</p>
+              </article>
+              <article class="backend-card">
+                <h4>操作習慣</h4>
+                <p>以快速查詢、少切頁、少輸入為主。</p>
+              </article>
+              <article class="backend-card">
+                <h4>後續擴充</h4>
+                <p>日後可再接預約、報告、訊息與會員資料。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
