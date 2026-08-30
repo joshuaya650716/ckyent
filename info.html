@@ -9,18 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="placeholder.css" />
   </head>
   <body>
     <div class="page">
       <header class="topbar">
         <div>
           <p class="eyebrow">Clinic information</p>
-          <h1 id="clinic-name">門診資訊</h1>
+          <h1>門診資訊</h1>
         </div>
         <nav class="topbar__nav" aria-label="主要導覽">
           <a href="index.html">回首頁</a>
           <a href="doctor.html">醫師介紹</a>
-          <a href="backend.html">編輯內容</a>
+          <a href="backend.html">後台規劃</a>
         </nav>
       </header>
 
@@ -28,20 +29,26 @@
         <section class="hero">
           <div class="hero__content">
             <p class="eyebrow">來診前先看這裡</p>
-            <h2 id="info-headline">把時間、地址、交通與聯絡方式整理清楚</h2>
-            <p class="hero__lead" id="info-lead">
+            <h2>把時間、地址、交通與聯絡方式整理清楚</h2>
+            <p class="hero__lead">
               這一頁的目標很單純：讓病人不用找半天，就能知道幾點來、怎麼來、要帶什麼，以及怎麼先問問題。
             </p>
           </div>
           <aside class="hero__panel" aria-label="資訊摘要">
             <div class="panel-card panel-card--accent">
               <span class="panel-card__label">院所位置</span>
-              <strong id="address">診所地址 / 交通指引</strong>
-              <p id="transport">可接地圖、停車資訊與大眾運輸說明。</p>
+              <strong>診所地址 / 交通指引</strong>
+              <p>可接地圖、停車資訊與大眾運輸說明。</p>
             </div>
             <div class="panel-stack">
-              <article class="panel-card"><span class="panel-card__label">聯絡電話</span><strong id="phone">預約與詢問專線</strong></article>
-              <article class="panel-card"><span class="panel-card__label">看診提醒</span><strong id="check-in-note">請提早 10 分鐘報到</strong></article>
+              <article class="panel-card">
+                <span class="panel-card__label">聯絡電話</span>
+                <strong>預約與詢問專線</strong>
+              </article>
+              <article class="panel-card">
+                <span class="panel-card__label">看診提醒</span>
+                <strong>請提早 10 分鐘報到</strong>
+              </article>
             </div>
           </aside>
         </section>
@@ -55,16 +62,34 @@
           <article class="hours-card">
             <h3>門診時間</h3>
             <div class="hours-table">
-              <div class="hours-row"><strong>週一至週五</strong><span>午診 <span id="weekday-morning">14:00 - 17:30</span>，晚診 <span id="weekday-evening">18:30 - 21:30</span></span></div>
-              <div class="hours-row"><strong>週六</strong><span id="saturday-hours">上午診與部分時段預約制</span></div>
-              <div class="hours-row"><strong>週日</strong><span id="sunday-hours">休診或公告門診</span></div>
+              <div class="hours-row">
+                <strong>週一至週五</strong>
+                <span>午診 14:00 - 17:30，晚診 18:30 - 21:30</span>
+              </div>
+              <div class="hours-row">
+                <strong>週六</strong>
+                <span>上午診與部分時段預約制</span>
+              </div>
+              <div class="hours-row">
+                <strong>週日</strong>
+                <span>休診或公告門診</span>
+              </div>
             </div>
           </article>
 
           <div class="contact-stack">
-            <article class="contact-pill"><span>電話</span><strong id="phone">請填診所專線</strong></article>
-            <article class="contact-pill"><span>地址</span><strong id="address">請填完整院所地址</strong></article>
-            <article class="contact-pill"><span>交通</span><strong id="transport">大眾運輸、停車資訊、步行路線</strong></article>
+            <article class="contact-pill">
+              <span>電話</span>
+              <strong>請填診所專線</strong>
+            </article>
+            <article class="contact-pill">
+              <span>地址</span>
+              <strong>請填完整院所地址</strong>
+            </article>
+            <article class="contact-pill">
+              <span>交通</span>
+              <strong>大眾運輸、停車資訊、步行路線</strong>
+            </article>
           </div>
         </section>
 
@@ -74,13 +99,53 @@
         </section>
 
         <section class="info-grid">
-          <article class="info-card"><h3>看診前建議</h3><ul id="before-visit-list"><li>提早報到</li><li>帶健保卡與相關資料</li><li>慢性病可預先整理症狀</li></ul></article>
-          <article class="info-card"><h3>常見服務</h3><ul id="services-list"><li>鼻過敏與鼻塞</li><li>耳鳴與耳悶</li><li>咽喉不適與感冒追蹤</li></ul></article>
-          <article class="service-card"><h3>未來可加</h3><p>線上預約、Google 地圖、衛教下載、門診公告與最新消息。</p></article>
+          <article class="info-card">
+            <h3>看診前建議</h3>
+            <ul>
+              <li>提早報到</li>
+              <li>帶健保卡與相關資料</li>
+              <li>慢性病可預先整理症狀</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>常見服務</h3>
+            <ul>
+              <li>鼻過敏與鼻塞</li>
+              <li>耳鳴與耳悶</li>
+              <li>咽喉不適與感冒追蹤</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <h3>未來可加</h3>
+            <p>線上預約、Google 地圖、衛教下載、門診公告與最新消息。</p>
+          </article>
+        </section>
+
+        <section aria-labelledby="info-placeholder-title">
+          <div class="section-head">
+            <p class="eyebrow">預留位置</p>
+            <h2 id="info-placeholder-title">地圖、照片和連結先留著</h2>
+          </div>
+
+          <div class="placeholder-grid">
+            <article class="placeholder-card">
+              <span class="placeholder-label">地圖位</span>
+              <strong>Google Map / 路線圖</strong>
+              <p>之後可直接嵌入地圖或交通導引。</p>
+            </article>
+            <article class="placeholder-card">
+              <span class="placeholder-label">照片位</span>
+              <strong>診所外觀 / 候診區</strong>
+              <p>方便病人先認路，也能增加信任感。</p>
+            </article>
+            <article class="placeholder-card">
+              <span class="placeholder-label">快速連結位</span>
+              <strong>電話、LINE、預約</strong>
+              <p>未來可以直接換成可點擊按鈕。</p>
+            </article>
+          </div>
         </section>
       </main>
     </div>
-    <script src="site-data.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
