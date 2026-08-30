@@ -20,8 +20,8 @@
     <div class="page">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Clinic portal concept</p>
-          <h1>楊啟坤耳鼻喉診所</h1>
+          <p class="eyebrow" id="home-eyebrow">Clinic portal concept</p>
+          <h1 id="clinic-name">楊啟坤耳鼻喉診所</h1>
         </div>
 
         <nav class="topbar__nav" aria-label="主要導覽">
@@ -36,9 +36,9 @@
       <main>
         <section class="hero" id="front">
           <div class="hero__content">
-            <p class="eyebrow">更美一點，也更好擴充</p>
-            <h2>把診所網站做成一個安靜、清楚、可信任的入口</h2>
-            <p class="hero__lead">
+            <p class="eyebrow" id="home-eyebrow-2">更美一點，也更好擴充</p>
+            <h2 id="home-headline">把診所網站做成一個安靜、清楚、可信任的入口</h2>
+            <p class="hero__lead" id="home-lead">
               這版會先把品牌感、分頁感與後台感拉開。前台看起來像正式官網，後台則保留給門診營運、個案管理、預約與未來模組。
             </p>
 
@@ -67,17 +67,17 @@
           <aside class="hero__panel" aria-label="首頁摘要">
             <div class="panel-card panel-card--accent">
               <span class="panel-card__label">今日門診</span>
-              <strong>08:30 - 21:30</strong>
+              <strong id="today-hours">08:30 - 21:30</strong>
               <p>午診、晚診、預約與現場掛號集中管理。</p>
             </div>
             <div class="panel-stack">
               <article class="panel-card">
                 <span class="panel-card__label">候診</span>
-                <strong>12 人</strong>
+                <strong id="waiting-count">12 人</strong>
               </article>
               <article class="panel-card">
                 <span class="panel-card__label">預約完成</span>
-                <strong>26 筆</strong>
+                <strong id="appointment-count">26 筆</strong>
               </article>
             </div>
           </aside>
@@ -249,6 +249,7 @@
       </main>
     </div>
 
+    <script src="site-data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
