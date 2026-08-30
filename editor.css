@@ -1,0 +1,201 @@
+.editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 16px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.editor-panel,
+.editor-preview,
+.preview-card,
+.editor-note {
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.editor-panel {
+  padding: 20px;
+}
+
+.section-head--tight {
+  margin-top: 0;
+}
+
+.editor-fieldset {
+  margin: 0 0 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.editor-fieldset legend {
+  padding: 0 8px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.editor-form {
+  display: grid;
+  gap: 12px;
+}
+
+.field,
+.field-row {
+  display: grid;
+  gap: 8px;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid rgba(15, 118, 110, 0.22);
+  border-color: rgba(15, 118, 110, 0.42);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.field-row--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.editor-submit {
+  border-color: transparent;
+}
+
+.editor-secondary {
+  color: var(--ink);
+  border-color: var(--line);
+  background: #fff;
+}
+
+.editor-status {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.editor-preview {
+  position: sticky;
+  top: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.preview-card {
+  padding: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 34%),
+    #fff;
+}
+
+.preview-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.5rem;
+}
+
+.preview-card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.preview-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.preview-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.preview-grid article {
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.preview-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.preview-grid strong {
+  display: block;
+  margin-top: 8px;
+}
+
+.editor-note {
+  padding: 16px;
+  background: #f7f8f5;
+}
+
+.editor-note strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.editor-note p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 1020px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-preview {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .field-row,
+  .field-row--two {
+    grid-template-columns: 1fr;
+  }
+}
