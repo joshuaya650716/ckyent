@@ -39,6 +39,35 @@ const CKYENT_DEFAULT_DATA = {
   checkInNote: "請提早 10 分鐘報到",
   beforeVisit: ["提早報到", "帶健保卡與相關資料", "慢性病可預先整理症狀"],
   services: ["鼻過敏與鼻塞", "耳鳴與耳悶", "咽喉不適與感冒追蹤"],
+  quickLinks: [
+    {
+      order: "1",
+      title: "LINE 預約",
+      description: "之後可直接放官方 LINE 或預約表單。",
+      buttonText: "開啟連結",
+      linkUrl: "https://line.me/",
+      imageUrl: "",
+      visible: true,
+    },
+    {
+      order: "2",
+      title: "電話聯絡",
+      description: "可接診所電話，讓病人一鍵撥號。",
+      buttonText: "撥打電話",
+      linkUrl: "tel:",
+      imageUrl: "",
+      visible: true,
+    },
+    {
+      order: "3",
+      title: "診所地圖",
+      description: "可接 Google Map 或院所路線頁。",
+      buttonText: "開啟地圖",
+      linkUrl: "https://maps.google.com/",
+      imageUrl: "",
+      visible: true,
+    },
+  ],
 };
 
 function CKYENT_cloneDefaultData() {
@@ -58,6 +87,27 @@ function CKYENT_normalizeLines(value) {
     .split(/\r?\n/)
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function CKYENT_normalizeBlocks(value) {
+  if (!Array.isArray(value)) {
+    return CKYENT_cloneDefaultData().quickLinks;
+  }
+
+  return value
+    .map((item, index) => ({
+      order: String(item?.order ?? index + 1).trim() || String(index + 1),
+      title: typeof item?.title === "string" ? item.title.trim() : "",
+      description:
+        typeof item?.description === "string" ? item.description.trim() : "",
+      buttonText:
+        typeof item?.buttonText === "string" ? item.buttonText.trim() : "",
+      linkUrl: typeof item?.linkUrl === "string" ? item.linkUrl.trim() : "",
+      imageUrl: typeof item?.imageUrl === "string" ? item.imageUrl.trim() : "",
+      visible: item?.visible !== false,
+    }))
+    .filter((item) => item.title || item.description || item.linkUrl || item.imageUrl)
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
 }
 
 function CKYENT_mergeData(source) {
@@ -111,6 +161,10 @@ function CKYENT_mergeData(source) {
 
   if (source.services) {
     merged.services = CKYENT_normalizeLines(source.services);
+  }
+
+  if (source.quickLinks) {
+    merged.quickLinks = CKYENT_normalizeBlocks(source.quickLinks);
   }
 
   return merged;
