@@ -52,175 +52,201 @@
           </div>
         </section>
 
-        <section class="editor-layout" aria-labelledby="editor-title">
-          <form class="editor-panel" id="clinic-editor">
-            <div class="section-head section-head--tight">
-              <p class="eyebrow">編輯欄位</p>
-              <h2 id="editor-title">網站內容</h2>
-            </div>
+        <section class="auth-panel" id="editor-login-panel">
+          <div class="auth-copy">
+            <p class="eyebrow">登入</p>
+            <h2>先登入，才能開始編輯</h2>
+            <p>這一層是簡單登入門檻，先把一般訪客擋在外面，再進到內容編輯器。</p>
+          </div>
 
-            <fieldset class="editor-fieldset">
-              <legend>首頁</legend>
-              <label class="field">
-                <span>診所名稱</span>
-                <input id="edit-clinic-name" type="text" />
-              </label>
-              <label class="field">
-                <span>首頁小標</span>
-                <input id="edit-home-eyebrow" type="text" />
-              </label>
-              <label class="field">
-                <span>首頁大標題</span>
-                <textarea id="edit-home-headline" rows="2"></textarea>
-              </label>
-              <label class="field">
-                <span>首頁說明</span>
-                <textarea id="edit-home-lead" rows="4"></textarea>
-              </label>
-              <div class="field-row">
-                <label class="field">
-                  <span>今日門診</span>
-                  <input id="edit-today-hours" type="text" />
-                </label>
-                <label class="field">
-                  <span>候診</span>
-                  <input id="edit-waiting-count" type="text" />
-                </label>
-                <label class="field">
-                  <span>預約完成</span>
-                  <input id="edit-appointment-count" type="text" />
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="editor-fieldset">
-              <legend>醫師介紹</legend>
-              <label class="field">
-                <span>醫師姓名</span>
-                <input id="edit-doctor-name" type="text" />
-              </label>
-              <label class="field">
-                <span>醫師頁大標題</span>
-                <textarea id="edit-doctor-headline" rows="2"></textarea>
-              </label>
-              <label class="field">
-                <span>醫師頁說明</span>
-                <textarea id="edit-doctor-lead" rows="3"></textarea>
-              </label>
-              <label class="field">
-                <span>醫師簡介</span>
-                <textarea id="edit-doctor-summary" rows="4"></textarea>
-              </label>
-              <div class="field-row field-row--two">
-                <label class="field">
-                  <span>專長方向</span>
-                  <input id="edit-doctor-specialty" type="text" />
-                </label>
-                <label class="field">
-                  <span>看診風格</span>
-                  <input id="edit-doctor-style" type="text" />
-                </label>
-              </div>
-              <label class="field">
-                <span>看診重點</span>
-                <input id="edit-doctor-focus" type="text" />
-              </label>
-            </fieldset>
-
-            <fieldset class="editor-fieldset">
-              <legend>門診資訊</legend>
-              <label class="field">
-                <span>門診頁大標題</span>
-                <textarea id="edit-info-headline" rows="2"></textarea>
-              </label>
-              <label class="field">
-                <span>門診頁說明</span>
-                <textarea id="edit-info-lead" rows="3"></textarea>
-              </label>
-              <div class="field-row field-row--two">
-                <label class="field">
-                  <span>平日午診</span>
-                  <input id="edit-weekday-morning" type="text" />
-                </label>
-                <label class="field">
-                  <span>平日晚診</span>
-                  <input id="edit-weekday-evening" type="text" />
-                </label>
-              </div>
-              <div class="field-row field-row--two">
-                <label class="field">
-                  <span>週六</span>
-                  <input id="edit-saturday-hours" type="text" />
-                </label>
-                <label class="field">
-                  <span>週日</span>
-                  <input id="edit-sunday-hours" type="text" />
-                </label>
-              </div>
-              <label class="field">
-                <span>電話</span>
-                <input id="edit-phone" type="text" />
-              </label>
-              <label class="field">
-                <span>地址</span>
-                <input id="edit-address" type="text" />
-              </label>
-              <label class="field">
-                <span>交通</span>
-                <input id="edit-transport" type="text" />
-              </label>
-              <label class="field">
-                <span>看診提醒</span>
-                <input id="edit-check-in-note" type="text" />
-              </label>
-              <label class="field">
-                <span>看診前建議，一行一項</span>
-                <textarea id="edit-before-visit" rows="4"></textarea>
-              </label>
-              <label class="field">
-                <span>常見服務，一行一項</span>
-                <textarea id="edit-services" rows="4"></textarea>
-              </label>
-            </fieldset>
-
+          <form class="auth-form" id="editor-login">
+            <label class="field">
+              <span>帳號</span>
+              <input id="login-username" type="text" autocomplete="username" />
+            </label>
+            <label class="field">
+              <span>密碼</span>
+              <input id="login-password" type="password" autocomplete="current-password" />
+            </label>
             <div class="editor-actions">
-              <button class="action action--primary editor-submit" type="submit">儲存變更</button>
-              <button class="action editor-secondary" id="reset-editor" type="button">重設預設</button>
-              <button class="action editor-secondary" id="export-editor" type="button">複製備份</button>
+              <button class="action action--primary editor-submit" type="submit">登入後台</button>
             </div>
-            <p class="editor-status" id="editor-status">尚未儲存新的變更。</p>
+            <p class="editor-status auth-status" id="login-status">請輸入管理員帳號與密碼。</p>
           </form>
+        </section>
 
-          <aside class="editor-preview" aria-label="即時預覽">
-            <div class="preview-card">
-              <p class="eyebrow">即時預覽</p>
-              <h3 id="preview-clinic-name">楊啟坤耳鼻喉診所</h3>
-              <strong id="preview-home-headline">把診所網站做成一個安靜、清楚、可信任的入口</strong>
-              <p id="preview-home-lead">這裡會同步顯示首頁說明。</p>
-            </div>
+        <section class="editor-shell" id="editor-shell" hidden>
+          <section class="editor-layout" aria-labelledby="editor-title">
+            <form class="editor-panel" id="clinic-editor">
+              <div class="section-head section-head--tight">
+                <p class="eyebrow">編輯欄位</p>
+                <h2 id="editor-title">網站內容</h2>
+              </div>
 
-            <div class="preview-grid">
-              <article>
-                <span>今日門診</span>
-                <strong id="preview-hours">08:30 - 21:30</strong>
-              </article>
-              <article>
-                <span>醫師</span>
-                <strong id="preview-doctor">楊啟坤醫師</strong>
-              </article>
-              <article>
-                <span>電話</span>
-                <strong id="preview-phone">請填診所專線</strong>
-              </article>
-            </div>
+              <fieldset class="editor-fieldset">
+                <legend>首頁</legend>
+                <label class="field">
+                  <span>診所名稱</span>
+                  <input id="edit-clinic-name" type="text" />
+                </label>
+                <label class="field">
+                  <span>首頁小標</span>
+                  <input id="edit-home-eyebrow" type="text" />
+                </label>
+                <label class="field">
+                  <span>首頁大標題</span>
+                  <textarea id="edit-home-headline" rows="2"></textarea>
+                </label>
+                <label class="field">
+                  <span>首頁說明</span>
+                  <textarea id="edit-home-lead" rows="4"></textarea>
+                </label>
+                <div class="field-row">
+                  <label class="field">
+                    <span>今日門診</span>
+                    <input id="edit-today-hours" type="text" />
+                  </label>
+                  <label class="field">
+                    <span>候診</span>
+                    <input id="edit-waiting-count" type="text" />
+                  </label>
+                  <label class="field">
+                    <span>預約完成</span>
+                    <input id="edit-appointment-count" type="text" />
+                  </label>
+                </div>
+              </fieldset>
 
-            <div class="editor-note">
-              <strong>先說清楚</strong>
-              <p>
-                這個簡單版會把內容存在你的瀏覽器。它很適合先讓你直覺試改內容；如果要讓所有訪客都看到同一份更新，就需要下一階段接資料庫或 GitHub 寫回功能。
-              </p>
-            </div>
-          </aside>
+              <fieldset class="editor-fieldset">
+                <legend>醫師介紹</legend>
+                <label class="field">
+                  <span>醫師姓名</span>
+                  <input id="edit-doctor-name" type="text" />
+                </label>
+                <label class="field">
+                  <span>醫師頁大標題</span>
+                  <textarea id="edit-doctor-headline" rows="2"></textarea>
+                </label>
+                <label class="field">
+                  <span>醫師頁說明</span>
+                  <textarea id="edit-doctor-lead" rows="3"></textarea>
+                </label>
+                <label class="field">
+                  <span>醫師簡介</span>
+                  <textarea id="edit-doctor-summary" rows="4"></textarea>
+                </label>
+                <div class="field-row field-row--two">
+                  <label class="field">
+                    <span>專長方向</span>
+                    <input id="edit-doctor-specialty" type="text" />
+                  </label>
+                  <label class="field">
+                    <span>看診風格</span>
+                    <input id="edit-doctor-style" type="text" />
+                  </label>
+                </div>
+                <label class="field">
+                  <span>看診重點</span>
+                  <input id="edit-doctor-focus" type="text" />
+                </label>
+              </fieldset>
+
+              <fieldset class="editor-fieldset">
+                <legend>門診資訊</legend>
+                <label class="field">
+                  <span>門診頁大標題</span>
+                  <textarea id="edit-info-headline" rows="2"></textarea>
+                </label>
+                <label class="field">
+                  <span>門診頁說明</span>
+                  <textarea id="edit-info-lead" rows="3"></textarea>
+                </label>
+                <div class="field-row field-row--two">
+                  <label class="field">
+                    <span>平日午診</span>
+                    <input id="edit-weekday-morning" type="text" />
+                  </label>
+                  <label class="field">
+                    <span>平日晚診</span>
+                    <input id="edit-weekday-evening" type="text" />
+                  </label>
+                </div>
+                <div class="field-row field-row--two">
+                  <label class="field">
+                    <span>週六</span>
+                    <input id="edit-saturday-hours" type="text" />
+                  </label>
+                  <label class="field">
+                    <span>週日</span>
+                    <input id="edit-sunday-hours" type="text" />
+                  </label>
+                </div>
+                <label class="field">
+                  <span>電話</span>
+                  <input id="edit-phone" type="text" />
+                </label>
+                <label class="field">
+                  <span>地址</span>
+                  <input id="edit-address" type="text" />
+                </label>
+                <label class="field">
+                  <span>交通</span>
+                  <input id="edit-transport" type="text" />
+                </label>
+                <label class="field">
+                  <span>看診提醒</span>
+                  <input id="edit-check-in-note" type="text" />
+                </label>
+                <label class="field">
+                  <span>看診前建議，一行一項</span>
+                  <textarea id="edit-before-visit" rows="4"></textarea>
+                </label>
+                <label class="field">
+                  <span>常見服務，一行一項</span>
+                  <textarea id="edit-services" rows="4"></textarea>
+                </label>
+              </fieldset>
+
+              <div class="editor-actions">
+                <button class="action action--primary editor-submit" type="submit">儲存變更</button>
+                <button class="action editor-secondary" id="reset-editor" type="button">重設預設</button>
+                <button class="action editor-secondary" id="export-editor" type="button">複製備份</button>
+                <button class="action editor-secondary" id="logout-editor" type="button">登出</button>
+              </div>
+              <p class="editor-status" id="editor-status">尚未儲存新的變更。</p>
+            </form>
+
+            <aside class="editor-preview" aria-label="即時預覽">
+              <div class="preview-card">
+                <p class="eyebrow">即時預覽</p>
+                <h3 id="preview-clinic-name">楊啟坤耳鼻喉診所</h3>
+                <strong id="preview-home-headline">把診所網站做成一個安靜、清楚、可信任的入口</strong>
+                <p id="preview-home-lead">這裡會同步顯示首頁說明。</p>
+              </div>
+
+              <div class="preview-grid">
+                <article>
+                  <span>今日門診</span>
+                  <strong id="preview-hours">08:30 - 21:30</strong>
+                </article>
+                <article>
+                  <span>醫師</span>
+                  <strong id="preview-doctor">楊啟坤醫師</strong>
+                </article>
+                <article>
+                  <span>電話</span>
+                  <strong id="preview-phone">請填診所專線</strong>
+                </article>
+              </div>
+
+              <div class="editor-note">
+                <strong>先說清楚</strong>
+                <p>
+                  這個簡單版會把內容存在你的瀏覽器。它很適合先讓你直覺試改內容；如果要讓所有訪客都看到同一份更新，就需要下一階段接資料庫或 GitHub 寫回功能。
+                </p>
+              </div>
+            </aside>
+          </section>
         </section>
       </main>
     </div>
