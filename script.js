@@ -24,8 +24,10 @@ const moduleDetails = {
 const dataStore = window.CKYENT_SITE_DATA;
 
 function setText(id, value) {
-  const element = document.getElementById(id);
-  if (element && value) element.textContent = value;
+  if (!value) return;
+  document.querySelectorAll(`[id="${id}"]`).forEach((element) => {
+    element.textContent = value;
+  });
 }
 
 function setList(id, items) {
@@ -179,8 +181,7 @@ function updateEditorPreview(data) {
 
 function showEditorStatus(message) {
   const status = document.getElementById("editor-status");
-  if (!status) return;
-  status.textContent = message;
+  if (status) status.textContent = message;
 }
 
 function initEditor(data) {
@@ -190,9 +191,7 @@ function initEditor(data) {
   fillEditorForm(data);
   updateEditorPreview(data);
 
-  form.addEventListener("input", () => {
-    updateEditorPreview(readEditorForm());
-  });
+  form.addEventListener("input", () => updateEditorPreview(readEditorForm()));
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -202,8 +201,7 @@ function initEditor(data) {
     showEditorStatus("已儲存。回首頁或重新整理前台，就會看到新內容。");
   });
 
-  const resetButton = document.getElementById("reset-editor");
-  resetButton?.addEventListener("click", () => {
+  document.getElementById("reset-editor")?.addEventListener("click", () => {
     const defaults = dataStore.reset();
     fillEditorForm(defaults);
     applyClinicData(defaults);
@@ -211,8 +209,7 @@ function initEditor(data) {
     showEditorStatus("已重設為預設內容。");
   });
 
-  const exportButton = document.getElementById("export-editor");
-  exportButton?.addEventListener("click", async () => {
+  document.getElementById("export-editor")?.addEventListener("click", async () => {
     const dataToExport = dataStore.save(readEditorForm());
     const text = JSON.stringify(dataToExport, null, 2);
     try {
@@ -229,7 +226,4 @@ applyClinicData(clinicData);
 initModuleCards(clinicData || {});
 initEditor(clinicData || {});
 
-window.addEventListener("storage", () => {
-  const nextData = dataStore?.load();
-  applyClinicData(nextData);
-});
+window.addEventListener("storage", () => applyClinicData(dataStore?.load()));
