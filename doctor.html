@@ -9,17 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="placeholder.css" />
   </head>
   <body>
     <div class="page">
       <header class="topbar">
         <div>
           <p class="eyebrow">Doctor profile</p>
-          <h1 id="clinic-name">醫師介紹</h1>
+          <h1>醫師介紹</h1>
         </div>
         <nav class="topbar__nav" aria-label="主要導覽">
           <a href="index.html">回首頁</a>
-          <a href="backend.html">編輯內容</a>
+          <a href="backend.html">後台規劃</a>
           <a href="info.html">門診資訊</a>
         </nav>
       </header>
@@ -28,25 +29,25 @@
         <section class="hero">
           <div class="hero__content">
             <p class="eyebrow">看診風格</p>
-            <h2 id="doctor-headline">以清楚說明、溫和溝通、精準判斷為核心</h2>
-            <p class="hero__lead" id="doctor-lead">
+            <h2>以清楚說明、溫和溝通、精準判斷為核心</h2>
+            <p class="hero__lead">
               這一頁可以用來建立病人的信任感，讓大家在看診前先知道醫師的專長、看診節奏與診所風格。
             </p>
           </div>
           <aside class="hero__panel" aria-label="醫師摘要">
             <div class="panel-card panel-card--accent">
               <span class="panel-card__label">主治醫師</span>
-              <strong id="doctor-name-card">楊啟坤醫師</strong>
-              <p id="doctor-specialty-card">耳鼻喉專科、慢性追蹤與門診評估。</p>
+              <strong>楊啟坤醫師</strong>
+              <p>耳鼻喉專科、慢性追蹤與門診評估。</p>
             </div>
             <div class="panel-stack">
               <article class="panel-card">
                 <span class="panel-card__label">專長</span>
-                <strong id="doctor-specialty">鼻過敏 / 耳鳴 / 咽喉疾病</strong>
+                <strong>鼻過敏 / 耳鳴 / 咽喉疾病</strong>
               </article>
               <article class="panel-card">
                 <span class="panel-card__label">溝通方式</span>
-                <strong id="doctor-style">簡單、清楚、好理解</strong>
+                <strong>簡單、清楚、好理解</strong>
               </article>
             </div>
           </aside>
@@ -60,27 +61,39 @@
         <section class="profile-grid">
           <article class="profile-card">
             <div class="profile-card__portrait" aria-hidden="true"></div>
-            <h3 id="doctor-name">楊啟坤醫師</h3>
-            <p id="doctor-summary">
+            <h3>楊啟坤醫師</h3>
+            <p>
               主要負責耳鼻喉門診、慢性症狀追蹤與一般評估。畫面設計會盡量讓病人感覺平穩、專業，不會太硬，也不會太像廣告。
             </p>
             <div class="profile-meta">
               <div>
                 <span>專長方向</span>
-                <strong id="doctor-specialty">過敏性鼻炎、耳鳴、喉部不適、反覆感冒</strong>
+                <strong>過敏性鼻炎、耳鳴、喉部不適、反覆感冒</strong>
               </div>
               <div>
                 <span>看診重點</span>
-                <strong id="doctor-focus">症狀說明清楚、流程簡化、追蹤一致</strong>
+                <strong>症狀說明清楚、流程簡化、追蹤一致</strong>
               </div>
             </div>
           </article>
 
           <div class="bio-list">
-            <article class="bio-item"><h4>門診特色</h4><p id="doctor-feature-1">以清楚判斷與穩定追蹤為主，適合做成每週門診說明與看診提醒。</p></article>
-            <article class="bio-item"><h4>病人會看到什麼</h4><p id="doctor-feature-2">醫師照片、專長、門診時段、可看診項目、如何預約與聯絡。</p></article>
-            <article class="bio-item"><h4>後台可以接什麼</h4><p id="doctor-feature-3">醫師排班、診次公告、看診說明、衛教文章與最新訊息。</p></article>
-            <article class="bio-item"><h4>頁面感受</h4><p>不要太花，用留白、低飽和色與有秩序的卡片去建立信任感。</p></article>
+            <article class="bio-item">
+              <h4>門診特色</h4>
+              <p>以清楚判斷與穩定追蹤為主，適合做成每週門診說明與看診提醒。</p>
+            </article>
+            <article class="bio-item">
+              <h4>病人會看到什麼</h4>
+              <p>醫師照片、專長、門診時段、可看診項目、如何預約與聯絡。</p>
+            </article>
+            <article class="bio-item">
+              <h4>後台可以接什麼</h4>
+              <p>醫師排班、診次公告、看診說明、衛教文章與最新訊息。</p>
+            </article>
+            <article class="bio-item">
+              <h4>頁面感受</h4>
+              <p>不要太花，用留白、低飽和色與有秩序的卡片去建立信任感。</p>
+            </article>
           </div>
         </section>
 
@@ -90,14 +103,49 @@
         </section>
 
         <section class="schedule-grid">
-          <article class="schedule-card"><span>平日午診</span><strong id="weekday-morning">14:00 - 17:30</strong></article>
-          <article class="schedule-card"><span>平日晚診</span><strong id="weekday-evening">18:30 - 21:30</strong></article>
-          <article class="schedule-card"><span>建議預約</span><strong id="doctor-specialty">慢性追蹤、耳鳴、鼻過敏</strong></article>
-          <article class="schedule-card"><span>適合說明</span><strong>初診流程、候診時間、注意事項</strong></article>
+          <article class="schedule-card">
+            <span>平日午診</span>
+            <strong>14:00 - 17:30</strong>
+          </article>
+          <article class="schedule-card">
+            <span>平日晚診</span>
+            <strong>18:30 - 21:30</strong>
+          </article>
+          <article class="schedule-card">
+            <span>建議預約</span>
+            <strong>慢性追蹤、耳鳴、鼻過敏</strong>
+          </article>
+          <article class="schedule-card">
+            <span>適合說明</span>
+            <strong>初診流程、候診時間、注意事項</strong>
+          </article>
+        </section>
+
+        <section aria-labelledby="doctor-placeholder-title">
+          <div class="section-head">
+            <p class="eyebrow">預留位置</p>
+            <h2 id="doctor-placeholder-title">醫師照片與連結先留位</h2>
+          </div>
+
+          <div class="placeholder-grid">
+            <article class="placeholder-card">
+              <span class="placeholder-label">醫師照片位</span>
+              <strong>正式照 / 看診形象照</strong>
+              <p>之後可直接放入醫師照片，不用重排版面。</p>
+            </article>
+            <article class="placeholder-card">
+              <span class="placeholder-label">外部連結位</span>
+              <strong>LINE、簡介、掛號入口</strong>
+              <p>未來可在這裡接上快速聯絡按鈕。</p>
+            </article>
+            <article class="placeholder-card">
+              <span class="placeholder-label">內容擴充位</span>
+              <strong>學經歷 / 衛教 / 影片</strong>
+              <p>如果以後要加更多介紹，也有固定位置。</p>
+            </article>
+          </div>
         </section>
       </main>
     </div>
-    <script src="site-data.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
