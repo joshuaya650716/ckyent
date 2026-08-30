@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>楊啟坤耳鼻喉診所｜品牌網站與後台規劃</title>
+    <meta
+      name="description"
+      content="一個更精緻、可擴充的診所網站規劃，包含前台首頁與後台管理架構。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Clinic portal concept</p>
+          <h1>楊啟坤耳鼻喉診所</h1>
+        </div>
+
+        <nav class="topbar__nav" aria-label="主要導覽">
+          <a href="#front">前台首頁</a>
+          <a href="backend.html">後台規劃</a>
+          <a href="doctor.html">醫師介紹</a>
+          <a href="info.html">門診資訊</a>
+          <a href="#modules">模組分頁</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="front">
+          <div class="hero__content">
+            <p class="eyebrow">更美一點，也更好擴充</p>
+            <h2>把診所網站做成一個安靜、清楚、可信任的入口</h2>
+            <p class="hero__lead">
+              這版會先把品牌感、分頁感與後台感拉開。前台看起來像正式官網，後台則保留給門診營運、個案管理、預約與未來模組。
+            </p>
+
+            <div class="hero__actions">
+              <a class="action action--primary" href="#modules">看分頁規劃</a>
+              <a class="action" href="backend.html">看後台設計</a>
+              <a class="action" href="doctor.html">醫師介紹</a>
+            </div>
+
+            <div class="hero__meta">
+              <div>
+                <span>主色</span>
+                <strong>深綠 + 米白</strong>
+              </div>
+              <div>
+                <span>風格</span>
+                <strong>穩重、專業、醫療感</strong>
+              </div>
+              <div>
+                <span>結構</span>
+                <strong>前台首頁 + 後台中心</strong>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero__panel" aria-label="首頁摘要">
+            <div class="panel-card panel-card--accent">
+              <span class="panel-card__label">今日門診</span>
+              <strong>08:30 - 21:30</strong>
+              <p>午診、晚診、預約與現場掛號集中管理。</p>
+            </div>
+            <div class="panel-stack">
+              <article class="panel-card">
+                <span class="panel-card__label">候診</span>
+                <strong>12 人</strong>
+              </article>
+              <article class="panel-card">
+                <span class="panel-card__label">預約完成</span>
+                <strong>26 筆</strong>
+              </article>
+            </div>
+          </aside>
+        </section>
+
+        <section class="modules" id="modules" aria-labelledby="modules-title">
+          <div class="section-head">
+            <p class="eyebrow">分頁設計</p>
+            <h2 id="modules-title">像你貼的連結一樣，先規劃成清楚的入口分區</h2>
+          </div>
+
+          <div class="module-grid">
+            <button class="module-tile is-active" data-module="front" type="button">
+              <span class="module-tile__icon module-tile__icon--green" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M12 23h24v16H12z" />
+                  <path d="M10 23 24 12l14 11" />
+                  <path d="M20 39V28h8v11" />
+                </svg>
+              </span>
+              <span class="module-tile__title">前台首頁</span>
+              <span class="module-tile__copy">診所介紹、門診時間、醫師團隊、聯絡方式</span>
+            </button>
+
+            <button class="module-tile" data-module="service" type="button">
+              <span class="module-tile__icon module-tile__icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <rect x="11" y="12" width="26" height="24" rx="2" />
+                  <path d="M17 20h14M17 26h14M17 32h8" />
+                </svg>
+              </span>
+              <span class="module-tile__title">門診系統</span>
+              <span class="module-tile__copy">掛號、叫號、看診進度、門診狀態</span>
+            </button>
+
+            <button class="module-tile" data-module="admin" type="button">
+              <span class="module-tile__icon module-tile__icon--amber" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <circle cx="24" cy="24" r="10" />
+                  <path d="M24 6v6M24 36v6M6 24h6M36 24h6" />
+                </svg>
+              </span>
+              <span class="module-tile__title">管理系統</span>
+              <span class="module-tile__copy">排班、庫存、報表、權限與內部流程</span>
+            </button>
+
+            <button class="module-tile" data-module="case" type="button">
+              <span class="module-tile__icon module-tile__icon--stone" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M14 17h20v18H14z" />
+                  <path d="M18 17v-4h12v4M18 26h12M18 32h8" />
+                </svg>
+              </span>
+              <span class="module-tile__title">個案管理</span>
+              <span class="module-tile__copy">追蹤、衛教、提醒、回診與長期關懷</span>
+            </button>
+          </div>
+
+          <div class="feature-band">
+            <div>
+              <p class="eyebrow eyebrow--dark">被選取的分頁</p>
+              <h3 id="module-name">前台首頁</h3>
+            </div>
+            <p id="module-copy">
+              第一個頁面可以先做成正式官網感，讓病人看得懂診所、看得到資訊，也能很快找到門診與聯絡方式。
+            </p>
+          </div>
+        </section>
+
+        <section class="admin-layout" id="admin" aria-labelledby="admin-title">
+          <div class="section-head">
+            <p class="eyebrow">後台規劃</p>
+            <h2 id="admin-title">後台可以做得像工作台，不一定要做得花，但要順手</h2>
+          </div>
+
+          <div class="admin-grid">
+            <div class="admin-preview">
+              <div class="admin-preview__header">
+                <div>
+                  <p class="eyebrow eyebrow--dark">Dashboard</p>
+                  <h3>診所營運總覽</h3>
+                </div>
+                <span class="status">即時更新</span>
+              </div>
+
+              <div class="admin-metrics">
+                <article>
+                  <span>今日掛號</span>
+                  <strong>38</strong>
+                </article>
+                <article>
+                  <span>待診</span>
+                  <strong>12</strong>
+                </article>
+                <article>
+                  <span>需補貨</span>
+                  <strong>04</strong>
+                </article>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>09:20</strong>
+                    <p>上午門診啟動，候診區同步顯示。</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>11:30</strong>
+                    <p>提醒待追蹤個案與回診名單。</p>
+                  </div>
+                </div>
+                <div class="timeline__item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>16:00</strong>
+                    <p>更新晚診排班與庫存不足項目。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-list">
+              <article class="admin-card">
+                <h3>1. 門診管理</h3>
+                <p>掛號、叫號、看診狀態、診間安排。</p>
+              </article>
+              <article class="admin-card">
+                <h3>2. 個案追蹤</h3>
+                <p>回診提醒、衛教內容、長期關懷紀錄。</p>
+              </article>
+              <article class="admin-card">
+                <h3>3. 庫存與耗材</h3>
+                <p>批次補貨、消耗記錄、低庫存警示。</p>
+              </article>
+              <article class="admin-card">
+                <h3>4. 權限設定</h3>
+                <p>醫師、護理、櫃台、管理者不同權限。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="admin-linkbar">
+            <a href="backend.html">打開完整後台頁面</a>
+            <a href="doctor.html">看醫師介紹頁</a>
+            <a href="info.html">看門診資訊頁</a>
+            <a href="#front">回到前台首頁</a>
+          </div>
+        </section>
+
+        <section class="extensions" aria-labelledby="extensions-title">
+          <div class="section-head">
+            <p class="eyebrow">未來擴充</p>
+            <h2 id="extensions-title">先保留這些位子，之後擴張不會亂</h2>
+          </div>
+
+          <div class="chip-row">
+            <span>線上預約</span>
+            <span>檢查報告</span>
+            <span>衛教文章</span>
+            <span>LINE 入口</span>
+            <span>會員區</span>
+            <span>訊息中心</span>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
